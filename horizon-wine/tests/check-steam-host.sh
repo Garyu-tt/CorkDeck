@@ -37,6 +37,8 @@ $cc $flags "$root/tests/steam_download_formats.c" "$root/source/steam/steam_libr
 $cc $flags "$root/tests/steam_library_options.c" "$root/source/steam/steam_family.c" \
     "$root/source/steam/steam_library.c" "$root/source/steam/steam_app.c" \
     "$root/source/steam/steam_settings.c" "$root/source/steam/steam_file.c" "$root/source/steam/steam_wire.c" -o "$build/options"
+$cc $flags "$root/tests/steam_library_order.c" "$root/source/steam/steam_library.c" "$root/source/steam/steam_wire.c" -o "$build/library-order"
+"$build/library-order"
 "$build/options"
 $cc $flags -DSTEAM_DEVICE_KEY_FIXTURE "$root/tests/steam_session.c" "$root/source/steam/steam_session.c" \
     "$root/source/steam/steam_auth.c" "$root/source/steam/steam_cm_message.c" \
