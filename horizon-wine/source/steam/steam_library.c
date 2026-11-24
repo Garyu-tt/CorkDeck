@@ -78,8 +78,10 @@ static int by_id(const void *a, const void *b) {
   return (x > y) - (x < y);
 }
 static int by_name(const void *a, const void *b) {
-  return strcmp(((const struct steam_game *)a)->name,
-                ((const struct steam_game *)b)->name);
+  int order = strcmp(((const struct steam_game *)a)->name,
+                     ((const struct steam_game *)b)->name);
+  /* HOME pagination must have a stable total order even when names coincide. */
+  return order ? order : by_id(a, b);
 }
 enum steam_library_error steam_library_read(const struct steam_cm_message *m,
                                             uint64_t account,
